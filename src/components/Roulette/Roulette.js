@@ -1,0 +1,93 @@
+import React, { useEffect } from "react";
+import Winwheel from "winwheel";
+import { Button, DonutsImage, Container, Title, Subtitle, Flag } from '../../style';
+
+const Roulette = () => {
+  let theWheel;
+
+  useEffect(() => {
+    theWheel = new Winwheel({ 
+      "canvasId": "roulette",
+      'numSegments': 10,
+      'innerRadius': 30,
+      'outerRadius': 200,
+      'fillStyle': '#e7706f',
+      'lineWidth': 3,
+      'rotationAngle': 360,
+      'imageOverlay': true,
+      'pointerAngle': 0,
+      'responsive': true,
+      'textFontFamily': 'Roboto',
+      'textFontSize': 12,
+      'textAlignment': 'outer',
+      'textMargin': 30,
+      'animation': {
+        'type': 'spinToStop',
+        'duration': 5,
+        'spins': 8,
+        'callbackFinish': 'alertFood()',
+        'callbackAfter': 'drawTriangule()'
+      },
+      'segments':
+      [
+        {'fillStyle' : '#E5646E', 'text' : 'CHINESE FOOD'},
+        {'fillStyle' : '#F2F2F6', 'text' : 'JAPANESE FOOD'},
+        {'fillStyle' : '#4C509C', 'text' : 'THAI FOOD'},
+        {'fillStyle' : '#95CC81', 'text' : 'ITALIAN FOOD'},
+        {'fillStyle' : '#F2F2F6', 'text' : 'FRENCH FOOD'},
+        {'fillStyle' : '#E5646E', 'text' : 'GERMAN FOOD'},
+        {'fillStyle' : '#FFE07D', 'text' : 'SPANISH FOOD'},
+        {'fillStyle' : '#95CC81', 'text' : 'PORTUGUESE FOOD'},
+        {'fillStyle' : '#5055A0', 'text' : 'BRAZILIAN FOOD'},
+        {'fillStyle' : '#FFE07D', 'text' : 'MEXICAN FOOD'}
+
+      ],
+      'pointerGuide':
+      {
+        'display': true,
+        'strokeStyle': 'black',
+        'lineWidth': 2
+      }
+    });
+
+    const alertFood = () => {
+      let winningSegment = theWheel.getIndicatedSegment();
+      alert("The Food Choice is " + winningSegment.text + "!");
+    }
+  
+    const drawTriangule = () => {
+      let ctx = theWheel.ctx;
+  
+      ctx.strokeStyle = '#000000';     // Set line colour.
+      ctx.fillStyle   = '#ffffff';     // Set fill colour.
+      ctx.lineWidth   = 2;
+      ctx.beginPath();              // Begin path.
+      ctx.moveTo(170, 5);           // Move to initial position.
+      ctx.lineTo(230, 5);           // Draw lines to make the shape.
+      ctx.lineTo(200, 40);
+      ctx.lineTo(171, 5);
+      ctx.stroke();                 // Complete the path by stroking (draw lines).
+      ctx.fill();   
+    }
+
+    
+  }, []);
+
+  const Start = () => {
+    theWheel.startAnimation();
+  }
+
+  return (
+    <Container>
+      <canvas id="roulette" width="880" height="450"></canvas>
+      <Title>Roulette</Title>
+      <Subtitle>Find a recipe in one click!</Subtitle>
+      <Button onClick={() => Start()}>
+        I Want Now
+        <DonutsImage src={donuts} /> 
+      </Button>
+    </Container>
+  )
+};
+
+export default Roulette;
