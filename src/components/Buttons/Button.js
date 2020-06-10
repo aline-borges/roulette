@@ -1,14 +1,13 @@
-import botao from './style';
 import React from 'react';
+import Botao from './style';
+import Icon from '../Images/Icon';
 
-export const Button = (props) => {
+const Button = (props) => {
   return (
-    <button className={botao.button}>
+    <Botao>
       {props.name}
-      <img src={props.logo} 
-      alt="Checkout" 
-      title={props.title} />
-    </button>
+      <Icon src={props.src} />
+    </Botao>
   );
 };
 

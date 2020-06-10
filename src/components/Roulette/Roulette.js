@@ -1,9 +1,33 @@
 import React, { useEffect } from "react";
 import Winwheel from "winwheel";
-import { Button, DonutsImage, Container, Title, Subtitle, Flag } from '../../style';
+import Container from '../Containers/Container';
+import Button from '../Buttons/Button';
+import Title from '../Texts/Title';
+import Subtitle from '../Texts/Subtitle';
+import donuts from '/Cmder/roulette/src/assets/img/donuts.svg';
 
 const Roulette = () => {
   let theWheel;
+
+  const alertFood = () => {
+    let winningSegment = theWheel.getIndicatedSegment();
+    alert("The Food Choice is " + winningSegment.text + "!");
+  }
+
+  const drawTriangule = () => {
+    let ctx = theWheel.ctx;
+
+    ctx.strokeStyle = '#000000';     // Set line colour.
+    ctx.fillStyle   = '#ffffff';     // Set fill colour.
+    ctx.lineWidth   = 2;
+    ctx.beginPath();              // Begin path.
+    ctx.moveTo(170, 5);           // Move to initial position.
+    ctx.lineTo(230, 5);           // Draw lines to make the shape.
+    ctx.lineTo(200, 40);
+    ctx.lineTo(171, 5);
+    ctx.stroke();                 // Complete the path by stroking (draw lines).
+    ctx.fill();   
+  }
 
   useEffect(() => {
     theWheel = new Winwheel({ 
@@ -25,8 +49,8 @@ const Roulette = () => {
         'type': 'spinToStop',
         'duration': 5,
         'spins': 8,
-        'callbackFinish': 'alertFood()',
-        'callbackAfter': 'drawTriangule()'
+        'callbackFinish': alertFood,
+        'callbackBefore': drawTriangule
       },
       'segments':
       [
@@ -49,27 +73,6 @@ const Roulette = () => {
         'lineWidth': 2
       }
     });
-
-    const alertFood = () => {
-      let winningSegment = theWheel.getIndicatedSegment();
-      alert("The Food Choice is " + winningSegment.text + "!");
-    }
-  
-    const drawTriangule = () => {
-      let ctx = theWheel.ctx;
-  
-      ctx.strokeStyle = '#000000';     // Set line colour.
-      ctx.fillStyle   = '#ffffff';     // Set fill colour.
-      ctx.lineWidth   = 2;
-      ctx.beginPath();              // Begin path.
-      ctx.moveTo(170, 5);           // Move to initial position.
-      ctx.lineTo(230, 5);           // Draw lines to make the shape.
-      ctx.lineTo(200, 40);
-      ctx.lineTo(171, 5);
-      ctx.stroke();                 // Complete the path by stroking (draw lines).
-      ctx.fill();   
-    }
-
     
   }, []);
 
@@ -82,10 +85,7 @@ const Roulette = () => {
       <canvas id="roulette" width="880" height="450"></canvas>
       <Title>Roulette</Title>
       <Subtitle>Find a recipe in one click!</Subtitle>
-      <Button onClick={() => Start()}>
-        I Want Now
-        <DonutsImage src={donuts} /> 
-      </Button>
+      <Button name="I Want Now" src={donuts} onClick={() => Start()} />
     </Container>
   )
 };

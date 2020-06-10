@@ -1,14 +1,8 @@
 import React from 'react';
-import Global from './assets/styles/GlobalStyle';
-import Button from './components/Buttons/Button';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-function App() {
-  return (
-    <React.Fragment>
-      <Button>Hello World</Button>
-      <Global />
-    </React.Fragment>
-  );
-}
-
-export default App;
+ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+);

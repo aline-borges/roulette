@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+export const Botao = styled.button`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   border: none;
   border-radius: 15px;
   padding: 8px 24px;
@@ -18,4 +21,4 @@ export const Button = styled.button`
   }
 `;
 
-export default Button;
+export default Botao;
