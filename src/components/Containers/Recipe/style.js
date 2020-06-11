@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Background = styled.div`
+export const RecipeBox = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -8,7 +8,8 @@ export const Background = styled.div`
   align-items: center;
   min-width: 50vw;
   min-height: 100vh;
-  background: ${props => `url(${props.background})`};
+  background: transparent;
+  padding: 5px;
 `;
 
-export default Background
+export default RecipeBox

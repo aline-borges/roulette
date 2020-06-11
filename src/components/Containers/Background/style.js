@@ -1,6 +1,7 @@
+// @ts-nocheck
 import styled from 'styled-components';
 
-export const Recipe = styled.div`
+export const BackgroundImage = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -8,8 +9,7 @@ export const Recipe = styled.div`
   align-items: center;
   min-width: 50vw;
   min-height: 100vh;
-  background: transparent;
-  padding: 5px;
+  background: ${props => `url(${props.background})`};
 `;
 
-export default Recipe
+export default BackgroundImage
