@@ -1,9 +1,9 @@
 import React from 'react';
 import RecipeBox from './style';
-import TitleRecipe from '/Cmder/roulette/src/components/Texts/TitleRecipe';
-import Ingredients from '/Cmder/roulette/src/components/Lists/Ingredients';
-import Item from '/Cmder/roulette/src/components/Lists/Item';
-import PhotoFood from '/Cmder/roulette/src/components/Images/PhotoFood';
+import TitleRecipe from '../../../components/Texts/TitleRecipe';
+import Ingredients from '../../../components/Lists/Ingredients';
+import Item from '../../../components/Lists/Item';
+import PhotoFood from '../../../components/Images/PhotoFood';
 
 export const Recipe = () => {
   return(

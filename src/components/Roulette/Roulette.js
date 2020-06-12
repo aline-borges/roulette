@@ -4,14 +4,14 @@ import Container from '../Containers/Container';
 import Button from '../Buttons/Button';
 import Title from '../Texts/Title';
 import Subtitle from '../Texts/Subtitle';
-import donuts from '/Cmder/roulette/src/assets/img/donuts.svg';
+import donuts from '../../assets/img/donuts.svg';
 
 const Roulette = () => {
   let theWheel;
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    theWheel = new Winwheel({ 
+    theWheel = new Winwheel({
       'canvasId': "roulette",
       'numSegments': 10,
       'innerRadius': 30,
@@ -75,7 +75,7 @@ const Roulette = () => {
     ctx.lineTo(200, 40);
     ctx.lineTo(171, 5);
     ctx.stroke();                 // Complete the path by stroking (draw lines).
-    ctx.fill();   
+    ctx.fill();
   }
 
   return (

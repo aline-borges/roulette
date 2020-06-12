@@ -4,7 +4,7 @@ import Icon from '../Images/Icon';
 
 const Button = (props) => {
   return (
-    <Botao>
+    <Botao onClick={props.onClick}>
       {props.name}
       <Icon src={props.src} />
     </Botao>
